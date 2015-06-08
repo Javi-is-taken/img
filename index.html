@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<title>Splatoon Perks list</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<h1>PERKS MAKER</h1>
+	<div class="row">
+		<input type="text" value="Rollers" class="tier1">
+		<div class="tier sort"></div>
+	</div>
+	<div class="row">
+		<input type="text" value="Chargers" class="tier2">
+		<div class="tier sort"></div>
+	</div>
+	<div class="row">
+		<input type="text" value="Shooters" class="tier3">
+		<div class="tier sort"></div>
+	</div>
+	<div class="row">
+			<input type="text" value="Random" class="tier4">
+		<div class="tier sort"></div>
+	</div>
+	 	 
+	<div class="row last">
+		<input type="text" value="Turf War" class="tier7">
+		<div class="tier sort"></div>
+	</div>
+
+	<div class="checkboxes"><input type="checkbox" checked="true">Rollers &nbsp; <input type="checkbox" checked="true">Chargers &nbsp; <input type="checkbox" checked="true">Shooters &nbsp; <input type="checkbox" checked="true">Random &nbsp; <input type="checkbox" checked="true">Turf war &nbsp; </div>
+	 
+	<div id="char" class="sort">
+		<img src="img/Bombrangeup.png"><img src="img/Bombsniffer.png"><img src="img/Coldblooded.png"><img src="img/Comeback.png"><img src="img/Damageup.png"><img src="img/Defenseup.png"><img src="img/Haunt.png"><img src="img/Inkrecoveryup.png"><img src="img/Inkresistanceup.png"><img src="img/Inksavermain.png"><img src="img/Inksaversub.png"><img src="img/Lastditcheffort.png"><img src="img/Ninjasquid.png"><img src="img/Openinggambit.png"><img src="img/Quickrespawn.png"><img src="img/Quicksuperjump.png"><img src="img/Recon.png"><img src="img/Runspeedup.png"><img src="img/Specialchargeup.png"><img src="img/Specialdurationup.png"><img src="img/Specialsaver.png"><img src="img/Stealthjump.png"><img src="img/Swimspeedup.png"><img src="img/Tenacity.png">
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$(".tier, #char").sortable({
+				connectWith: ".sort",
+				placeholder: "placeholder",
+				revert: 100,
+				helper: "clone"
+			}).disableSelection();
+			$("input[type='checkbox']").click(function() {
+				if (!this.checked) {
+					var check = $("input[type='checkbox']").index(this);
+					$(".row:eq(" + check + ")").hide();
+					$("#char").append($(".row:eq(" + check + ")").find("img"));
+				} else {
+					var check = $("input[type='checkbox']").index(this);
+					$(".row:eq(" + check + ")").show();
+				}
+			});
+			$("#help").click(function () {
+				if ($(this).attr("class") == "hidden") {
+					$("#helptext").show();
+					$("#help").attr("class","showing");
+					$("#help").text("Hide help");
+				} else {
+					$("#helptext").hide();
+					$("#help").attr("class","hidden");
+					$("#help").text("Show help");
+				}
+			})
+		});
+	</script>
+</body>
